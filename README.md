@@ -24,6 +24,10 @@ No hand-crafted maze generation algorithm can produce "maximally educational" ma
 
 This project follows Karpathy's Autoresearch pattern exactly, just applied to adversarial maze training instead of language modeling.
 
+## Architecture
+
+![Alt text](./architecture-karpathy.png)
+
 **`prepare.py`** is the immutable harness. It contains the maze environment (11×11 grid, movement rules, step tracking), BFS utilities for pathfinding and maze validation, a fixed benchmark suite of 200 mazes spanning five difficulty tiers, and the sacred evaluation metric (`evaluate_solve_rate`). This file never changes. It defines the rules of the world and the yardstick for progress.
 
 **`train.py`** is the mutable artifact. It contains both neural networks (Generator and Solver), the adversarial training loop, all hyperparameters, reward computation, and the diversity buffer. The autoresearch agent modifies only this file, experimenting with architectures, learning rates, reward shaping, update ratios, and anything else that might improve the Solver's benchmark performance.
